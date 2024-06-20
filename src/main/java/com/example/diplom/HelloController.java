@@ -30,7 +30,7 @@ public class HelloController implements Initializable {
     @FXML
     private TextArea TAObOpOb, TAObOpAd, TAKlOpAd;
     @FXML
-    private Pane NaryaduPane, AdresaPane, BrigaduPane, SotrudnikiPane, AvtorizP, NewOb, NewNr, NewKl, VuhodPane, VoprosPane, NewBrigada,NewSotrudnik, IzmenitSotrudnik, IzmenitBrigada;
+    private Pane NaryaduPane, AdresaPane, BrigaduPane, SotrudnikiPane, AvtorizP, NewOb, NewNr, NewKl, VuhodPane, VoprosPane, NewBrigada, NewSotrudnik, IzmenitSotrudnik, IzmenitBrigada;
     @FXML
     private BorderPane borderP;
     @FXML
@@ -111,7 +111,7 @@ public class HelloController implements Initializable {
     private TextField Mail_login, password_login;
     @FXML
     private Label msg_login;
-//    String url = "jdbc:mysql://virps.ru:3106/Diplomich";
+    //    String url = "jdbc:mysql://virps.ru:3106/Diplomich";
 //    String user = "diplomich";
 //    String password = "danila080808";
     private Connection connection;
@@ -205,13 +205,14 @@ public class HelloController implements Initializable {
 //        }
 //    }
     @FXML
-    protected void FILLFalse(){
+    protected void FILLFalse() {
         NewBrigada.setVisible(false);
         NewSotrudnik.setVisible(false);
         IzmenitBrigada.setVisible(false);
         IzmenitSotrudnik.setVisible(false);
 
     }
+
     @FXML
     protected void onDobNK() {
         FILLFalse();
@@ -222,18 +223,21 @@ public class HelloController implements Initializable {
         VoprosPane.setVisible(false);
 
     }
+
     @FXML
     protected void AktivVuhod() {
         FILLFalse();
         borderP.setVisible(false);
         AvtorizP.setVisible(true);
     }
+
     @FXML
     protected void AktivVopros() {
         FILLFalse();
         VoprosPane.setVisible(true);
         VuhodPane.setVisible(false);
     }
+
     @FXML
     protected void AktivPochta() {
         FILLFalse();
@@ -293,7 +297,7 @@ public class HelloController implements Initializable {
         if (Mail_login.getText().equals("") | password_login.getText().equals("")) {
             msg_login.setText(" ");
             msg_login.setText("Введите логин и пароль!");
-        } else if (Mail_login.getText().equals(loginAuth)||password_login.getText().equals(passAuth)) {
+        } else if (Mail_login.getText().equals(loginAuth) || password_login.getText().equals(passAuth)) {
             borderP.setVisible(true);
             AvtorizP.setVisible(false);
         } else {
@@ -307,10 +311,12 @@ public class HelloController implements Initializable {
     protected void AktivUdKl() {
 
     }
+
     @FXML
     protected void AktivUdOb() {
 
     }
+
     @FXML
     protected void OnDobSot() {
         FILLFalse();
@@ -334,12 +340,94 @@ public class HelloController implements Initializable {
         FILLFalse();
         IzmenitBrigada.setVisible(true);
     }
+    protected void OpenMenuNastroiki() throws SQLException {
+//        for (int i = 0; i < listObject.size(); i++){
+//            ComboNarOb.getItems().add(listObject.get(i));
+//        }
+//            for (int i = 0; i < listSotrudniki.size(); i++){
+//            ComboNarIspolin.getItems().add(listSotrudniki.get(i));
+//        }
+//                for (int i = 0; i < listObject.size(); i++){
+//            ComboNarSos.getItems().add(listObject.get(i));
+//        }
+//        gd.getDataSotrudniki();
+//        listSotrudniki = gd.listSotrudniki;
+//        try {
+//            Sotrudniki_Id.setCellValueFactory(new PropertyValueFactory<Sotrudniki, Integer>("Id"));
+//            Sotrudniki_FIO.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Brigadir"));
+//            Sotrudniki_Tel.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Telefon"));
+//            Sotrudniki_Pochta.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Pochta"));
+//            Sotrudniki.setItems(listSotrudniki);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+        NaryaduPane.setVisible(false);
+        AdresaPane.setVisible(false);
+        BrigaduPane.setVisible(false);
+        SotrudnikiPane.setVisible(true);
+        NewNr.setVisible(false);
+        NewKl.setVisible(false);
+        NewOb.setVisible(false);
+        VuhodPane.setVisible(false);
+        VoprosPane.setVisible(false);
+    }
+
     @FXML
-    protected void onZagOb(){}
+    protected void onZagOb() throws SQLException {
+        String Nazvanie = (ObNaz.getText());
+        String OpisanieOb = (TAObOpOb.getText());
+        String Adres = (ObAd.getText());
+        String OpisanieAd = (TAObOpAd.getText());
+        String YurLico = (ObYurLico.getText());
+        String Telefon = (ObTel.getText());
+        String Pochta = (ObPochta.getText());
+        try {
+            String quary = "INSERT INTO `Diplomich`.`Object` (`Nazvanie`, `OpisanieOb`, `YurLico`, `Adres`, `OpisanieAd`, `Telefon`, `Pochta`) VALUES ('" + Nazvanie + "', '" + OpisanieOb + "', '" + YurLico + "', '" + Adres + "', '" + OpisanieAd + "', '" + Telefon + "', '" + Pochta + "');";
+            PreparedStatement preparedStatement = connection.prepareStatement(quary);
+            int rows = preparedStatement.executeUpdate();
+            System.out.println("Успешно");
+        } catch (SQLException e) {
+            System.out.println("Неуспешно");
+            printSQLException(e);
+        }
+        ObNaz.clear();
+        TAObOpOb.clear();
+        ObAd.clear();
+        TAObOpAd.clear();
+        ObYurLico.clear();
+        ObTel.clear();
+        ObPochta.clear();
+        NewOb.setVisible(false);
+        this.OpenMenuAdresa();
+    }
+
     @FXML
-    protected void onZagKl(){}
+    protected void onZagKl() throws SQLException {
+        String FIO = (KlFIO.getText());
+        String Telefon = (KlTel.getText());
+        String Adres = (KlAd.getText());
+        String OpisanieAd = (TAKlOpAd.getText());
+        try {
+            String quary = "INSERT INTO `Diplomich`.`Klient` (`FIO`, `Telefon`, `Adres`, `OpisanieAd`) VALUES ('" + FIO + "', '" + Telefon + "', '" + Adres + "', '" + OpisanieAd + "');";
+            PreparedStatement preparedStatement = connection.prepareStatement(quary);
+            int rows = preparedStatement.executeUpdate();
+            System.out.println("Успешно");
+        } catch (SQLException e) {
+            System.out.println("Неуспешно");
+            printSQLException(e);
+        }
+        KlFIO.clear();
+        TAKlOpAd.clear();
+        KlTel.clear();
+        KlAd.clear();
+        NewKl.setVisible(false);
+        this.OpenMenuAdresa();
+    }
+
     @FXML
-    protected void onZagSot(){}
+    protected void onZagSot() {
+    }
+
     @FXML
     protected void OpenMenuNaryadu() {
         cb.ConnectBd();
@@ -412,7 +500,7 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    protected void OpenMenuBrigadu() throws SQLException{
+    protected void OpenMenuBrigadu() throws SQLException {
         gd.getDataBrigadu();
         listBrigadu = gd.listBrigadu;
         try {
