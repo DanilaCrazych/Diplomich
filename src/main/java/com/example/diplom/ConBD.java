@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConBD {
     public Connection connection;
-    public void ConnectBd() {
+    public Connection ConnectBd() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://virps.ru:3106/Diplomich", "diplomich", "danila080808");
 //           System.out.println("Подключение к базе данных успешно установлено!");
@@ -14,6 +14,7 @@ public class ConBD {
             System.out.println("Ошибка при подключении к базе данных:");
             printSQLException(e);
         }
+        return null;
     }
     public void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

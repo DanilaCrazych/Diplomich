@@ -18,9 +18,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diplom.HelloController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diplom.HelloController">
    <children>
-      <BorderPane fx:id="borderP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1080.0" prefWidth="1920.0" visible="false">
+      <BorderPane fx:id="borderP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1080.0" prefWidth="1920.0">
          <top>
             <Pane prefHeight="100.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
                <children>
@@ -72,7 +72,7 @@
                            <top>
                               <Pane prefHeight="100.0" style="-fx-background-color: #1c1c1b;" BorderPane.alignment="CENTER">
                                  <children>
-                                    <TextField layoutX="450.0" layoutY="35.0" prefHeight="30.0" prefWidth="250.0" promptText="Поиск">
+                                    <TextField fx:id="searchNarady" layoutX="450.0" layoutY="35.0" prefHeight="30.0" prefWidth="250.0" promptText="Поиск">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -457,7 +457,7 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="CloseKl" layoutX="510.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloseKl" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
+                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloseKl" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -809,7 +809,7 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
+                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloseSotr" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -1223,7 +1223,7 @@
             </Pane>
          </bottom>
       </BorderPane>
-      <Pane fx:id="AvtorizP" cache="true" cacheHint="SCALE_AND_ROTATE" layoutY="50.0" prefHeight="1080.0" prefWidth="1920.0">
+      <Pane fx:id="AvtorizP" cache="true" cacheHint="SCALE_AND_ROTATE" layoutY="50.0" prefHeight="1080.0" prefWidth="1920.0" visible="false">
          <children>
             <Button fx:id="VhodMenu" layoutX="920.0" layoutY="626.0" mnemonicParsing="false" onAction="#OnMenuVhod" prefWidth="80.0" text="Войти">
                <font>

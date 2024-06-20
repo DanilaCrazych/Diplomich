@@ -30,7 +30,7 @@ public class HelloController implements Initializable {
     @FXML
     private TextArea TAObOpOb, TAObOpAd, TAKlOpAd;
     @FXML
-    private Pane NaryaduPane, AdresaPane, BrigaduPane, SotrudnikiPane, AvtorizP, NewOb, NewNr, NewKl, VuhodPane, VoprosPane, NewBrigada,NewSotrudnik, IzmenitSotrudnik, IzmenitBrigada;
+    private Pane NaryaduPane, AdresaPane, BrigaduPane, SotrudnikiPane, AvtorizP, NewOb, NewNr, NewKl, VuhodPane, VoprosPane, NewBrigada, NewSotrudnik, IzmenitSotrudnik, IzmenitBrigada;
     @FXML
     private BorderPane borderP;
     @FXML
@@ -179,6 +179,11 @@ public class HelloController implements Initializable {
     }
 
     @FXML
+    public void onCloseSotr() {
+        IzmenitSotrudnik.setVisible(false);
+    }
+
+    @FXML
     public void onCloseNr() {
         NewNr.setVisible(false);
     }
@@ -201,13 +206,14 @@ public class HelloController implements Initializable {
 //        }
 //    }
     @FXML
-    protected void FILLFalse(){
+    protected void FILLFalse() {
         NewBrigada.setVisible(false);
         NewSotrudnik.setVisible(false);
         IzmenitBrigada.setVisible(false);
         IzmenitSotrudnik.setVisible(false);
 
     }
+
     @FXML
     protected void onDobNK() {
         FILLFalse();
@@ -218,18 +224,21 @@ public class HelloController implements Initializable {
         VoprosPane.setVisible(false);
 
     }
+
     @FXML
     protected void AktivVuhod() {
         FILLFalse();
         borderP.setVisible(false);
         AvtorizP.setVisible(true);
     }
+
     @FXML
     protected void AktivVopros() {
         FILLFalse();
         VoprosPane.setVisible(true);
         VuhodPane.setVisible(false);
     }
+
     @FXML
     protected void AktivPochta() {
         FILLFalse();
@@ -270,18 +279,20 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void OnMenuVhod() {
-        autorization auth = new autorization();
-        auth.autorization();
+//        autorization auth = new autorization();
+//        auth.autorization();
     }
 
     @FXML
     protected void AktivUdKl() {
 
     }
+
     @FXML
     protected void AktivUdOb() {
 
     }
+
     @FXML
     protected void OnDobSot() {
         FILLFalse();
@@ -305,12 +316,19 @@ public class HelloController implements Initializable {
         FILLFalse();
         IzmenitBrigada.setVisible(true);
     }
+
     @FXML
-    protected void onZagOb(){}
+    protected void onZagOb() {
+    }
+
     @FXML
-    protected void onZagKl(){}
+    protected void onZagKl() {
+    }
+
     @FXML
-    protected void onZagSot(){}
+    protected void onZagSot() {
+    }
+
     @FXML
     protected void OpenMenuNaryadu() {
         cb.ConnectBd();
@@ -383,7 +401,7 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    protected void OpenMenuBrigadu() throws SQLException{
+    protected void OpenMenuBrigadu() throws SQLException {
         gd.getDataBrigadu();
         listBrigadu = gd.listBrigadu;
         try {
@@ -428,6 +446,12 @@ public class HelloController implements Initializable {
         VuhodPane.setVisible(false);
         VoprosPane.setVisible(false);
     }
+    @FXML
+    protected void searchKlienty(){
+        functionClass search = new functionClass();
+//        search.searchMethod();
+    }
+
 
 
 //    @FXML
