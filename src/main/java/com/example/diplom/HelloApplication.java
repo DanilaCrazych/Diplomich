@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root, Screen.getPrimary().getBounds().getWidth(), Screen.getPrimary().getBounds().getHeight());
         stage.setTitle("Hello!");
         stage.setScene(scene);
-        stage.setFullScreen(false);
+//        stage.setFullScreen(true);
         stage.show();
     }
     public static void main(String[] args) {launch();

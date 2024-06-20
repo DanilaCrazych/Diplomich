@@ -30,7 +30,7 @@ public class HelloController implements Initializable {
     @FXML
     private TextArea TAObOpOb, TAObOpAd, TAKlOpAd;
     @FXML
-    private Pane NaryaduPane, AdresaPane, BrigaduPane, SotrudnikiPane, AvtorizP, NewOb, NewNr, NewKl, VuhodPane, VoprosPane, NewBrigada, NewSotrudnik, IzmenitSotrudnik, IzmenitBrigada;
+    private Pane NaryaduPane, AdresaPane, BrigaduPane, SotrudnikiPane, AvtorizP, NewOb, NewNr, NewKl, VuhodPane, VoprosPane, NewBrigada,NewSotrudnik, IzmenitSotrudnik, IzmenitBrigada;
     @FXML
     private BorderPane borderP;
     @FXML
@@ -107,9 +107,13 @@ public class HelloController implements Initializable {
     private TableColumn<Brigadu, String> Brigadu_Sotrudnik;
     @FXML
     private TableView<Brigadu> Brigadu;
-    String url = "jdbc:mysql://virps.ru:3106/Diplomich";
-    String user = "diplomich";
-    String password = "danila080808";
+    @FXML
+    private TextField Mail_login, password_login;
+    @FXML
+    private Label msg_login;
+//    String url = "jdbc:mysql://virps.ru:3106/Diplomich";
+//    String user = "diplomich";
+//    String password = "danila080808";
     private Connection connection;
 
     @Override
@@ -118,7 +122,7 @@ public class HelloController implements Initializable {
         gd.getDataNaryadu();
         listNaryadu = gd.listNaryadu;
         try {
-            this.connection = DriverManager.getConnection(this.url, this.user, this.password);
+//            this.connection = DriverManager.getConnection(this.url, this.user, this.password);
             Nar_Id.setCellValueFactory(new PropertyValueFactory<Naryadu, Integer>("Id"));
             Nar_Naz.setCellValueFactory(new PropertyValueFactory<Naryadu, String>("Nazvanie"));
             Nar_Op.setCellValueFactory(new PropertyValueFactory<Naryadu, String>("Opisanie"));
@@ -179,11 +183,6 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    public void onCloseSotr() {
-        IzmenitSotrudnik.setVisible(false);
-    }
-
-    @FXML
     public void onCloseNr() {
         NewNr.setVisible(false);
     }
@@ -206,14 +205,13 @@ public class HelloController implements Initializable {
 //        }
 //    }
     @FXML
-    protected void FILLFalse() {
+    protected void FILLFalse(){
         NewBrigada.setVisible(false);
         NewSotrudnik.setVisible(false);
         IzmenitBrigada.setVisible(false);
         IzmenitSotrudnik.setVisible(false);
 
     }
-
     @FXML
     protected void onDobNK() {
         FILLFalse();
@@ -224,21 +222,18 @@ public class HelloController implements Initializable {
         VoprosPane.setVisible(false);
 
     }
-
     @FXML
     protected void AktivVuhod() {
         FILLFalse();
         borderP.setVisible(false);
         AvtorizP.setVisible(true);
     }
-
     @FXML
     protected void AktivVopros() {
         FILLFalse();
         VoprosPane.setVisible(true);
         VuhodPane.setVisible(false);
     }
-
     @FXML
     protected void AktivPochta() {
         FILLFalse();
@@ -279,20 +274,43 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void OnMenuVhod() {
-//        autorization auth = new autorization();
-//        auth.autorization();
+        ConBD cb = new ConBD();
+        cb.ConnectBd();
+        String query = "SELECT * FROM `Users` WHERE mail LIKE '" + Mail_login.getText() + "'";
+        String loginAuth = "";
+        String passAuth = "";
+        try {
+            Statement statement = cb.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                loginAuth = resultSet.getString(1);
+                passAuth = resultSet.getString(2);
+            }
+        } catch (Exception ex) {
+            System.out.println("Connection failed...");
+            System.out.println(ex);
+        }
+        if (Mail_login.getText().equals("") | password_login.getText().equals("")) {
+            msg_login.setText(" ");
+            msg_login.setText("Введите логин и пароль!");
+        } else if (Mail_login.getText().equals(loginAuth)||password_login.getText().equals(passAuth)) {
+            borderP.setVisible(true);
+            AvtorizP.setVisible(false);
+        } else {
+            msg_login.setText(" ");
+            msg_login.setText("Неверный логин или пароль!");
+            msg_login.setVisible(true);
+        }
     }
 
     @FXML
     protected void AktivUdKl() {
 
     }
-
     @FXML
     protected void AktivUdOb() {
 
     }
-
     @FXML
     protected void OnDobSot() {
         FILLFalse();
@@ -316,19 +334,12 @@ public class HelloController implements Initializable {
         FILLFalse();
         IzmenitBrigada.setVisible(true);
     }
-
     @FXML
-    protected void onZagOb() {
-    }
-
+    protected void onZagOb(){}
     @FXML
-    protected void onZagKl() {
-    }
-
+    protected void onZagKl(){}
     @FXML
-    protected void onZagSot() {
-    }
-
+    protected void onZagSot(){}
     @FXML
     protected void OpenMenuNaryadu() {
         cb.ConnectBd();
@@ -401,7 +412,7 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    protected void OpenMenuBrigadu() throws SQLException {
+    protected void OpenMenuBrigadu() throws SQLException{
         gd.getDataBrigadu();
         listBrigadu = gd.listBrigadu;
         try {
@@ -446,12 +457,6 @@ public class HelloController implements Initializable {
         VuhodPane.setVisible(false);
         VoprosPane.setVisible(false);
     }
-    @FXML
-    protected void searchKlienty(){
-        functionClass search = new functionClass();
-//        search.searchMethod();
-    }
-
 
 
 //    @FXML

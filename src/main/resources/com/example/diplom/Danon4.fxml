@@ -1235,7 +1235,7 @@
                   <Image url="@Untitled_logo_1_free-file.png" />
                </image>
             </ImageView>
-            <Label layoutX="850.0" layoutY="486.0" prefWidth="220.0" text="Введите данные для входа">
+            <Label fx:id="msg_login" layoutX="850.0" layoutY="486.0" prefWidth="220.0" text="Введите данные для входа">
                <font>
                   <Font size="18.0" />
                </font>
