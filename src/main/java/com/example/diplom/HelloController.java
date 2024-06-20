@@ -26,7 +26,7 @@ public class HelloController implements Initializable {
     GetDate gd = new GetDate();
     ConBD cb = new ConBD();
     @FXML
-    private TextField KlFIO, KlTel, KlAd, ObNaz, ObYurLico, ObAd, ObTel, ObPochta, NarNaz, NarOp, NarOb, NarAd, NarIspolin, NarZap, NarS, NarDo, NarSos, TFUdKl, TFUdOb;
+    private TextField KlFIO, KlTel, KlAd, ObNaz, ObYurLico, ObAd, ObTel, ObPochta, NarNaz, NarOp, NarOb, NarAd, NarIspolin, NarZap, NarS, NarDo, NarSos, TFUdKl, TFUdOb, PoiskAdresa;
     @FXML
     private TextArea TAObOpOb, TAObOpAd, TAKlOpAd;
     @FXML
@@ -38,15 +38,15 @@ public class HelloController implements Initializable {
     @FXML
     private DatePicker DataNar;
     @FXML
-    private TableColumn<Klient, Integer> Klient_Id;
+    private TableColumn<Klient, Integer> Id;
     @FXML
-    private TableColumn<Klient, String> Klient_FIO;
+    private TableColumn<Klient, String> FIO;
     @FXML
-    private TableColumn<Klient, String> Klient_Tel;
+    private TableColumn<Klient, String> Telefon;
     @FXML
-    private TableColumn<Klient, String> Klient_Ad;
+    private TableColumn<Klient, String> Adres;
     @FXML
-    private TableColumn<Klient, String> Klient_OpAd;
+    private TableColumn<Klient, String> OpisanieAd;
     @FXML
     private TableView<Klient> Klient;
     @FXML
@@ -465,11 +465,11 @@ public class HelloController implements Initializable {
         gd.getDataObject();
         listKlient = gd.listKlient;
         try {
-            Klient_Id.setCellValueFactory(new PropertyValueFactory<Klient, Integer>("Id"));
-            Klient_FIO.setCellValueFactory(new PropertyValueFactory<Klient, String>("FIO"));
-            Klient_Tel.setCellValueFactory(new PropertyValueFactory<Klient, String>("Telefon"));
-            Klient_Ad.setCellValueFactory(new PropertyValueFactory<Klient, String>("Adres"));
-            Klient_OpAd.setCellValueFactory(new PropertyValueFactory<Klient, String>("OpisanieAd"));
+            Id.setCellValueFactory(new PropertyValueFactory<Klient, Integer>("Id"));
+            FIO.setCellValueFactory(new PropertyValueFactory<Klient, String>("FIO"));
+            Telefon.setCellValueFactory(new PropertyValueFactory<Klient, String>("Telefon"));
+            Adres.setCellValueFactory(new PropertyValueFactory<Klient, String>("Adres"));
+            OpisanieAd.setCellValueFactory(new PropertyValueFactory<Klient, String>("OpisanieAd"));
             Klient.setItems(listKlient);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -544,6 +544,19 @@ public class HelloController implements Initializable {
         NewOb.setVisible(false);
         VuhodPane.setVisible(false);
         VoprosPane.setVisible(false);
+    }
+
+    @FXML
+    protected void searchKlient(){
+        Id.setCellValueFactory(new PropertyValueFactory<Klient, Integer>("Id"));
+        FIO.setCellValueFactory(new PropertyValueFactory<Klient, String>("FIO"));
+        Telefon.setCellValueFactory(new PropertyValueFactory<Klient, String>("Telefon"));
+        Adres.setCellValueFactory(new PropertyValueFactory<Klient, String>("Adres"));
+        OpisanieAd.setCellValueFactory(new PropertyValueFactory<Klient, String>("OpisanieAd"));
+
+        functionClass search = new functionClass();
+
+        search.searchMethod(PoiskAdresa, "Klient", "FIO", Klient, Klient.class);
     }
 
 
