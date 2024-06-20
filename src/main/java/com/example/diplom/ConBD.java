@@ -9,7 +9,7 @@ public class ConBD {
     public void ConnectBd() {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://virps.ru:3106/Diplomich", "diplomich", "danila080808");
-           System.out.println("Подключение к базе данных успешно установлено!");
+//           System.out.println("Подключение к базе данных успешно установлено!");
         } catch (SQLException e) {
             System.out.println("Ошибка при подключении к базе данных:");
             printSQLException(e);

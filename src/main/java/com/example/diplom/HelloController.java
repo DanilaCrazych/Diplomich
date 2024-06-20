@@ -270,10 +270,8 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void OnMenuVhod() {
-
-        borderP.setVisible(true);
-        AvtorizP.setVisible(false);
-
+        autorization auth = new autorization();
+        auth.autorization();
     }
 
     @FXML

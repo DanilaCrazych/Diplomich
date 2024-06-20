@@ -18,9 +18,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diplom.HelloController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diplom.HelloController">
    <children>
-      <BorderPane fx:id="borderP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1080.0" prefWidth="1920.0">
+      <BorderPane fx:id="borderP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1080.0" prefWidth="1920.0" visible="false">
          <top>
             <Pane prefHeight="100.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
                <children>
@@ -1223,7 +1223,7 @@
             </Pane>
          </bottom>
       </BorderPane>
-      <Pane fx:id="AvtorizP" cache="true" cacheHint="SCALE_AND_ROTATE" layoutY="50.0" prefHeight="1080.0" prefWidth="1920.0" visible="false">
+      <Pane fx:id="AvtorizP" cache="true" cacheHint="SCALE_AND_ROTATE" layoutY="50.0" prefHeight="1080.0" prefWidth="1920.0">
          <children>
             <Button fx:id="VhodMenu" layoutX="920.0" layoutY="626.0" mnemonicParsing="false" onAction="#OnMenuVhod" prefWidth="80.0" text="Войти">
                <font>
@@ -1240,12 +1240,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="810.0" layoutY="526.0" prefHeight="30.0" prefWidth="300.0" promptText="Почта">
+            <TextField fx:id="Mail_login" layoutX="810.0" layoutY="526.0" prefHeight="30.0" prefWidth="300.0" promptText="Почта">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField layoutX="810.0" layoutY="576.0" prefWidth="300.0" promptText="Пароль">
+            <TextField fx:id="password_login" layoutX="812.0" layoutY="569.0" prefWidth="300.0" promptText="Пароль">
                <font>
                   <Font size="18.0" />
                </font>
