@@ -1,0 +1,1256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.diplom.HelloController">
+   <children>
+      <BorderPane fx:id="borderP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1080.0" prefWidth="1920.0">
+         <top>
+            <Pane prefHeight="100.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="NaryaduButMenu" layoutX="400.0" layoutY="50.0" mnemonicParsing="false" onAction="#OpenMenuNaryadu" prefHeight="50.0" prefWidth="120.0" text="Наряды">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Button fx:id="AdresaButMenu" layoutX="520.0" layoutY="50.0" mnemonicParsing="false" onAction="#OpenMenuAdresa" prefHeight="50.0" prefWidth="200.0" text="Клиенты/Объекты">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Button fx:id="BrigaduButMenu" layoutX="720.0" layoutY="50.0" mnemonicParsing="false" onAction="#OpenMenuBrigadu" prefHeight="50.0" prefWidth="140.0" text="Бригады">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Button fx:id="SotrudnikiButMenu" layoutX="860.0" layoutY="50.0" mnemonicParsing="false" onAction="#OpenMenuSotrudniki" prefHeight="50.0" prefWidth="200.0" text="Сотрудники">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Button fx:id="Vopros" layoutX="1500.0" layoutY="50.0" mnemonicParsing="false" onAction="#AktivVopros" prefHeight="50.0" prefWidth="50.0" text="?">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="Pochta" layoutX="1550.0" layoutY="50.0" mnemonicParsing="false" onAction="#AktivPochta" prefHeight="50.0" prefWidth="300.0" text="danila.zamatevskiy@bk.ru">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="DobNr" layoutX="1254.0" layoutY="62.0" mnemonicParsing="false" onAction="#OnDobNr" prefHeight="38.0" prefWidth="200.0" text="+ Добавить наряд">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="100.0" fitWidth="260.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Без%20имени%20(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </top>
+         <bottom>
+            <Pane prefHeight="1080.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane fx:id="NaryaduPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1080.0" prefWidth="1920.0">
+                     <children>
+                        <BorderPane prefHeight="1080.0" prefWidth="1920.0">
+                           <top>
+                              <Pane prefHeight="100.0" style="-fx-background-color: #1c1c1b;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TextField layoutX="450.0" layoutY="35.0" prefHeight="30.0" prefWidth="250.0" promptText="Поиск">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button layoutX="860.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Выгрузить в Excel">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="33.0" text="Наряды" textFill="#c9c3c3">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="1200.0" layoutY="56.0" mnemonicParsing="false" text="Удалить наряд">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField layoutX="1255.0" layoutY="20.0" prefWidth="150.0" promptText="№ Наряда">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button layoutX="1330.0" layoutY="56.0" mnemonicParsing="false" text="Изменить наряд">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="950.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TableView fx:id="Nar" prefHeight="950.0" prefWidth="1920.0">
+                                       <columns>
+                                          <TableColumn fx:id="Nar_Id" prefWidth="50.0" text="№" />
+                                          <TableColumn fx:id="Nar_Naz" prefWidth="200.0" text="Название" />
+                                          <TableColumn fx:id="Nar_Op" prefWidth="400.0" text="Описание" />
+                                          <TableColumn fx:id="Nar_Kl" prefWidth="225.0" text="Клиент/Объект" />
+                                          <TableColumn fx:id="Nar_Ad" prefWidth="325.0" text="Адрес" />
+                                          <TableColumn fx:id="Nar_Is" prefWidth="225.0" text="Исполнитель" />
+                                          <TableColumn fx:id="Nar_Zap" prefWidth="150.0" text="Запланирован" />
+                                          <TableColumn fx:id="Nar_S" prefWidth="100.0" text="С" />
+                                          <TableColumn fx:id="Nar_Do" prefWidth="100.0" text="До" />
+                                          <TableColumn fx:id="Nar_Sostoyanie" prefWidth="150.0" text="Состояние" />
+                                       </columns></TableView>
+                                 </children></Pane>
+                           </bottom>
+                           <center>
+                              <Pane prefHeight="50.0" prefWidth="1920.0" BorderPane.alignment="CENTER" />
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="AdresaPane" layoutX="-1.0" prefHeight="1080.0" prefWidth="1980.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="1080.0" prefWidth="1920.0">
+                           <top>
+                              <Pane layoutX="390.0" prefHeight="100.0" prefWidth="1920.0" style="-fx-background-color: #1c1c1b;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="50.0" layoutY="33.0" text="Клиенты/Объекты" textFill="#c3c3c3">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="DobKl" layoutX="600.0" layoutY="35.0" mnemonicParsing="false" onAction="#OnDobKl" text="+ Добавить клиента">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="DobObject" layoutX="1250.0" layoutY="35.0" mnemonicParsing="false" onAction="#OnDobOb" text="+ Добавить объект">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField fx:id="PoiskAdresa" layoutX="320.0" layoutY="40.0" prefWidth="200.0" promptText="Поиск">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button fx:id="UdalKl" layoutX="800.0" layoutY="55.0" mnemonicParsing="false" onAction="#AktivUdKl" prefWidth="150.0" text="Удалить клиента">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="UdalOb" layoutX="1450.0" layoutY="55.0" mnemonicParsing="false" onAction="#AktivUdOb" prefWidth="150.0" text="Удалить объект">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField fx:id="TFUdKl" layoutX="800.0" layoutY="20.0" prefHeight="25.0" prefWidth="150.0" promptText="№ Клиента">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></TextField>
+                                    <TextField fx:id="TFUdOb" layoutX="1450.0" layoutY="21.0" prefHeight="25.0" prefWidth="150.0" promptText="№ Объекта">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></TextField>
+                                    <Button layoutX="1000.0" layoutY="35.0" mnemonicParsing="false" text="Изменить клиента">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="1650.0" layoutY="35.0" mnemonicParsing="false" text="Измененить объект">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <center>
+                              <Pane prefHeight="1080.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TabPane prefHeight="980.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE">
+                                      <tabs>
+                                        <Tab text="Клиенты">
+                                             <content>
+                                                <AnchorPane prefHeight="980.0" prefWidth="1920.0">
+                                                   <children>
+                                                      <TableView fx:id="Klient" prefHeight="950.0" prefWidth="1920.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="Klient_Id" prefWidth="100.0" text="№" />
+                                                          <TableColumn fx:id="Klient_FIO" prefWidth="420.0" text="ФИО" />
+                                                            <TableColumn fx:id="Klient_Tel" prefWidth="200.0" text="Телефон" />
+                                                            <TableColumn fx:id="Klient_Ad" prefWidth="700.0" text="Адрес" />
+                                                            <TableColumn fx:id="Klient_OpAd" prefWidth="500.0" text="Описание адреса" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                        </Tab>
+                                        <Tab text="Объекты">
+                                          <content>
+                                            <AnchorPane prefHeight="980.0" prefWidth="1920.0">
+                                                   <children>
+                                                      <TableView fx:id="Object" prefHeight="950.0" prefWidth="1920.0">
+                                                        <columns>
+                                                          <TableColumn fx:id="Object_Id" prefWidth="70.0" text="№" />
+                                                          <TableColumn fx:id="Object_Naz" prefWidth="280.00001525878906" text="Название" />
+                                                            <TableColumn fx:id="Object_OpOb" prefWidth="300.0" text="Описание объекта" />
+                                                            <TableColumn fx:id="Object_YurLico" prefWidth="300.0" text="Юрлицо" />
+                                                            <TableColumn fx:id="Object_Ad" prefWidth="350.0" text="Адрес" />
+                                                            <TableColumn fx:id="Object_OpAd" prefWidth="270.0" text="Описание адреса" />
+                                                            <TableColumn fx:id="Object_Tel" prefWidth="155.0" text="Телефон" />
+                                                            <TableColumn fx:id="Object_Pochta" prefWidth="200.0" text="Почта" />
+                                                        </columns>
+                                                      </TableView>
+                                                   </children></AnchorPane>
+                                          </content>
+                                        </Tab>
+                                      </tabs>
+                                    </TabPane>
+                                 </children>
+                              </Pane>
+                           </center></BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="BrigaduPane" layoutX="495.0" prefHeight="1080.0" prefWidth="990.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="1080.0" prefWidth="990.0">
+                           <top>
+                              <Pane prefHeight="100.0" style="-fx-background-color: #1c1c1b;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="50.0" layoutY="30.0" text="Бригады" textFill="#c9c3c3">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="BrigDobBrig" layoutX="300.0" layoutY="30.0" mnemonicParsing="false" onAction="#OnDobBrig" prefHeight="40.0" prefWidth="200.0" text="+ Добавить бригаду">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="618.0" layoutY="58.0" mnemonicParsing="false" text="Удалить бригаду">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="BrigIzmBrig" layoutX="766.0" layoutY="58.0" mnemonicParsing="false" onAction="#OnIzmBrig" text="Изменить бригаду">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField layoutX="680.0" layoutY="20.0" promptText="№ Бригады">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="980.0" prefWidth="990.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TableView fx:id="Brigadu" prefHeight="980.0" prefWidth="990.0">
+                                       <columns>
+                                          <TableColumn fx:id="Brigadu_Id" prefWidth="99.0" text="№" />
+                                          <TableColumn fx:id="Brigadu_Brigadir" prefWidth="450.0" text="Бригадир" />
+                                          <TableColumn fx:id="Brigadu_Sotrudnik" prefWidth="450.0" text="Сотрудник" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="SotrudnikiPane" layoutX="495.0" prefHeight="1080.0" prefWidth="990.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="1080.0" prefWidth="990.0">
+                           <top>
+                              <Pane prefHeight="100.0" style="-fx-background-color: #1c1c1b;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="50.0" layoutY="30.0" text="Сотрудники" textFill="#c9c3c3">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="SotDobSot" layoutX="300.0" layoutY="30.0" mnemonicParsing="false" onAction="#OnDobSot" prefHeight="40.0" prefWidth="200.0" text="+ Добавить сотрудника">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="600.0" layoutY="58.0" mnemonicParsing="false" text="Удалить сотрудника">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="SotIzmSot" layoutX="766.0" layoutY="58.0" mnemonicParsing="false" onAction="#OnIzmSot" text="Изменить сотрудника">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField layoutX="680.0" layoutY="20.0" promptText="№ Сотрудника">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="980.0" prefWidth="990.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TableView fx:id="Sotrudniki" prefHeight="980.0" prefWidth="990.0">
+                                      <columns>
+                                          <TableColumn fx:id="Sotrudniki_Id" prefWidth="75.0" text="№" />
+                                        <TableColumn fx:id="Sotrudniki_FIO" prefWidth="450.0" text="ФИО" />
+                                        <TableColumn fx:id="Sotrudniki_Tel" prefWidth="200.0" text="Мобильный телефон" />
+                                          <TableColumn fx:id="Sotrudniki_Pochta" prefWidth="265.0" text="Электронная почта" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </Pane>
+                           </bottom></BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="NewOb" layoutX="400.0" prefHeight="720.0" prefWidth="550.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="720.0" prefWidth="550.0">
+                           <top>
+                              <Pane prefHeight="50.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="12.0" text="Новый объект">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="CloseOb" layoutX="500.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloseOb" prefHeight="30.0" prefWidth="30.0" text="Х" textFill="#d30000">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="670.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="DobOb" layoutX="430.0" layoutY="620.0" mnemonicParsing="false" prefWidth="100.0" text="Добавить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="CloseOb2" layoutX="320.0" layoutY="620.0" mnemonicParsing="false" onAction="#onCloseOb2" prefWidth="100.0" text="Отменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="50.0" text="Название">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="ObNaz" layoutX="50.0" layoutY="70.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="110.0" text="Описание объекта">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="280.0" text="Адрес">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="ObAd" layoutX="50.0" layoutY="300.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="450.0" text="Обратная связь">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="220.0" text="Юрлицо">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="480.0" text="Телефон">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="ObYurLico" layoutX="50.0" layoutY="240.0" prefHeight="25.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="ObTel" layoutX="50.0" layoutY="500.0" prefWidth="225.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextArea fx:id="TAObOpOb" layoutX="50.0" layoutY="130.0" prefHeight="80.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></TextArea>
+                                    <TextArea fx:id="TAObOpAd" layoutX="50.0" layoutY="360.0" prefHeight="80.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextArea>
+                                    <Label layoutX="50.0" layoutY="340.0" text="Описание адреса">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="540.0" text="Почта">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="ObPochta" layoutX="50.0" layoutY="560.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="NewKl" layoutX="400.0" prefHeight="620.0" prefWidth="550.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="620.0" prefWidth="550.0">
+                           <top>
+                              <Pane prefHeight="50.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="12.0" text="Новый клиент">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="CloseKl" layoutX="510.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloseKl" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="570.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="ZagKl" layoutX="430.0" layoutY="520.0" mnemonicParsing="false" prefWidth="100.0" text="Добавить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="CloseKl2" layoutX="320.0" layoutY="520.0" mnemonicParsing="false" onAction="#onCloseKl2" prefWidth="100.0" text="Отменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="30.0" text="ФИО">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="KlFIO" layoutX="50.0" layoutY="50.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="210.0" text="Описание адреса">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="150.0" text="Адрес">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="KlAd" layoutX="50.0" layoutY="170.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="90.0" text="Мобильный телефон">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="KlTelefon" layoutX="50.0" layoutY="110.0" prefWidth="200.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextArea fx:id="TAKlOpAd" layoutX="50.0" layoutY="230.0" prefHeight="100.0" prefWidth="450.0" />
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="NewNr" layoutX="400.0" prefHeight="670.0" prefWidth="550.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="670.0" prefWidth="550.0">
+                           <top>
+                              <Pane prefHeight="50.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="12.0" text="Новый наряд">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="CloseNr" layoutX="500.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloseNr" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#c90b0b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="620.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="ZagNar" layoutX="440.0" layoutY="570.0" mnemonicParsing="false" prefWidth="100.0" text="Добавить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="CloseNr2" layoutX="320.0" layoutY="570.0" mnemonicParsing="false" onAction="#onCloseNr2" prefWidth="100.0" text="Отменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="30.0" text="Название">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="NarNaz" layoutX="50.0" layoutY="50.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="90.0" text="Описание">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="260.0" text="Адрес">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="NarAd" layoutX="50.0" layoutY="280.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="320.0" text="Исполнитель">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="200.0" text="Клиент или объект">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="ComboNarOb" layoutX="50.0" layoutY="220.0" prefWidth="300.0" />
+                                    <Button fx:id="DobNK" layoutX="400.0" layoutY="220.0" mnemonicParsing="false" onAction="#onDobNK" prefWidth="100.0" text="+ Новый" />
+                                    <ChoiceBox fx:id="" layoutX="50.0" layoutY="340.0" prefWidth="450.0" />
+                                    <Label layoutX="50.0" layoutY="380.0" text="Запланирован на">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker fx:id="DataNar" layoutX="50.0" layoutY="400.0" />
+                                    <TextArea fx:id="TANarOp" layoutX="50.0" layoutY="110.0" prefHeight="80.0" prefWidth="450.0" wrapText="true" />
+                                    <TextField fx:id="NarS" layoutX="75.0" layoutY="445.0" />
+                                    <TextField fx:id="NarDo" layoutX="265.0" layoutY="445.0" />
+                                    <Label layoutX="50.0" layoutY="450.0" text="C">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="235.0" layoutY="450.0" text="до">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="490.0" text="Состояние">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="ComboNarSos" layoutX="50.0" layoutY="510.0" prefWidth="200.0" />
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="NewSotrudnik" layoutX="400.0" prefHeight="620.0" prefWidth="550.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="620.0" prefWidth="550.0">
+                           <top>
+                              <Pane prefHeight="50.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="12.0" text="Новый сотрудник">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="570.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button layoutX="430.0" layoutY="520.0" mnemonicParsing="false" prefWidth="100.0" text="Добавить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="320.0" layoutY="520.0" mnemonicParsing="false" prefWidth="100.0" text="Отменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="60.0" text="ФИО">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="50.0" layoutY="90.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="300.0" text="Пароль">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="220.0" text="Почта">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="50.0" layoutY="250.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="140.0" text="Мобильный телефон">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="50.0" layoutY="170.0" prefWidth="200.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField layoutX="50.0" layoutY="330.0" prefWidth="200.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children></Pane>
+                  <Pane fx:id="NewBrigada" layoutX="400.0" prefHeight="420.0" prefWidth="550.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="420.0" prefWidth="550.0">
+                           <top>
+                              <Pane prefHeight="50.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="12.0" text="Новая бригада">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="370.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button layoutX="424.0" layoutY="320.0" mnemonicParsing="false" prefWidth="100.0" text="Добавить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="318.0" layoutY="320.0" mnemonicParsing="false" prefWidth="100.0" text="Отменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="140.0" text="Сотрудник">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="40.0" text="Бригадир">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox layoutX="50.0" layoutY="70.0" prefWidth="400.0" />
+                                    <ComboBox layoutX="50.0" layoutY="170.0" prefWidth="400.0" />
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="IzmenitBrigada" layoutX="410.0" layoutY="10.0" prefHeight="420.0" prefWidth="550.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="420.0" prefWidth="550.0">
+                           <top>
+                              <Pane prefHeight="50.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="12.0" text="Изменить бригаду">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="370.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button layoutX="424.0" layoutY="320.0" mnemonicParsing="false" prefWidth="100.0" text="Изменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="318.0" layoutY="320.0" mnemonicParsing="false" prefWidth="100.0" text="Отменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="140.0" text="Сотрудник">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="40.0" text="Бригадир">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox layoutX="50.0" layoutY="70.0" prefWidth="400.0" />
+                                    <ComboBox layoutX="50.0" layoutY="170.0" prefWidth="400.0" />
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="IzmenitSotrudnik" layoutX="410.0" layoutY="10.0" prefHeight="620.0" prefWidth="550.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="620.0" prefWidth="550.0">
+                           <top>
+                              <Pane prefHeight="50.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="12.0" text="Изменить сотрудника">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="570.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button layoutX="430.0" layoutY="520.0" mnemonicParsing="false" prefWidth="100.0" text="Изменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="320.0" layoutY="520.0" mnemonicParsing="false" prefWidth="100.0" text="Отменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="60.0" text="ФИО">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="50.0" layoutY="90.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="300.0" text="Пароль">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="220.0" text="Почта">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="50.0" layoutY="250.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="140.0" text="Мобильный телефон">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="50.0" layoutY="170.0" prefWidth="200.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField layoutX="50.0" layoutY="330.0" prefWidth="200.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="NewNr1" layoutX="410.0" layoutY="10.0" prefHeight="670.0" prefWidth="550.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="670.0" prefWidth="550.0">
+                           <top>
+                              <Pane prefHeight="50.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="12.0" text="Изменить наряд">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="500.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#c90b0b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="620.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button layoutX="440.0" layoutY="570.0" mnemonicParsing="false" prefWidth="100.0" text="Изменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="320.0" layoutY="570.0" mnemonicParsing="false" prefWidth="100.0" text="Отменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="30.0" text="Название">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="NarNaz1" layoutX="50.0" layoutY="50.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="90.0" text="Описание">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="260.0" text="Адрес">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="NarAd1" layoutX="50.0" layoutY="280.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="320.0" text="Исполнитель">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="200.0" text="Клиент или объект">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="ComboNarOb1" layoutX="50.0" layoutY="220.0" prefWidth="300.0" />
+                                    <Button fx:id="DobNK1" layoutX="400.0" layoutY="220.0" mnemonicParsing="false" onAction="#onDobNK" prefWidth="100.0" text="+ Новый" />
+                                    <ChoiceBox fx:id="ComboNarIspolin1" layoutX="50.0" layoutY="340.0" prefWidth="450.0" />
+                                    <Label layoutX="50.0" layoutY="380.0" text="Запланирован на">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker fx:id="DataNar1" layoutX="50.0" layoutY="400.0" />
+                                    <TextArea fx:id="TANarOp1" layoutX="50.0" layoutY="110.0" prefHeight="80.0" prefWidth="450.0" wrapText="true" />
+                                    <TextField fx:id="NarS1" layoutX="75.0" layoutY="445.0" />
+                                    <TextField fx:id="NarDo1" layoutX="265.0" layoutY="445.0" />
+                                    <Label layoutX="50.0" layoutY="450.0" text="C">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="235.0" layoutY="450.0" text="до">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="490.0" text="Состояние">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="ComboNarSos1" layoutX="50.0" layoutY="510.0" prefWidth="200.0" />
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="NewOb1" layoutX="410.0" layoutY="10.0" prefHeight="720.0" prefWidth="550.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="720.0" prefWidth="550.0">
+                           <top>
+                              <Pane prefHeight="50.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="12.0" text="Изменить объект">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="500.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="Х" textFill="#d30000">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="670.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button layoutX="430.0" layoutY="620.0" mnemonicParsing="false" prefWidth="100.0" text="Изменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="320.0" layoutY="620.0" mnemonicParsing="false" prefWidth="100.0" text="Отменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="50.0" text="Название">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="ObNaz1" layoutX="50.0" layoutY="70.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="110.0" text="Описание объекта">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="280.0" text="Адрес">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="ObAd1" layoutX="50.0" layoutY="300.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="450.0" text="Обратная связь">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="220.0" text="Юрлицо">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="480.0" text="Телефон">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="ObYurLico1" layoutX="50.0" layoutY="240.0" prefHeight="25.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="ObTel1" layoutX="50.0" layoutY="500.0" prefWidth="225.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextArea fx:id="TAObOpOb1" layoutX="50.0" layoutY="130.0" prefHeight="80.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextArea>
+                                    <TextArea fx:id="TAObOpAd1" layoutX="50.0" layoutY="360.0" prefHeight="80.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextArea>
+                                    <Label layoutX="50.0" layoutY="340.0" text="Описание адреса">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="540.0" text="Почта">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="ObPochta1" layoutX="50.0" layoutY="560.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="NewKl1" layoutX="410.0" layoutY="10.0" prefHeight="620.0" prefWidth="550.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="620.0" prefWidth="550.0">
+                           <top>
+                              <Pane prefHeight="50.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="12.0" prefHeight="27.0" prefWidth="170.0" text="Изменить клиента">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </top>
+                           <bottom>
+                              <Pane prefHeight="570.0" style="-fx-background-color: #e6e4e1;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button layoutX="430.0" layoutY="520.0" mnemonicParsing="false" prefWidth="100.0" text="Изменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="320.0" layoutY="520.0" mnemonicParsing="false" prefWidth="100.0" text="Отменить">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="30.0" text="ФИО">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="KlFIO1" layoutX="50.0" layoutY="50.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="210.0" text="Описание адреса">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="150.0" text="Адрес">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="KlAd1" layoutX="50.0" layoutY="170.0" prefWidth="450.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="50.0" layoutY="90.0" text="Мобильный телефон">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="KlTelefon1" layoutX="50.0" layoutY="110.0" prefWidth="200.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextArea fx:id="TAKlOpAd1" layoutX="50.0" layoutY="230.0" prefHeight="100.0" prefWidth="450.0" />
+                                 </children>
+                              </Pane>
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="VuhodPane" layoutX="1550.0" prefHeight="39.0" prefWidth="300.0" style="-fx-background-color: #e3e1da;" visible="false">
+                     <children>
+                        <BorderPane prefHeight="39.0" prefWidth="300.0">
+                           <center>
+                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #e3e1da;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="Vuhod" mnemonicParsing="false" onAction="#AktivVuhod" prefHeight="39.0" prefWidth="300.0" text="Выход" textFill="#eb0404" />
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="VoprosPane" layoutX="1350.0" prefHeight="150.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <BorderPane prefHeight="150.0" prefWidth="200.0">
+                           <center>
+                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label layoutX="6.0" layoutY="4.0" text="Обратитесь в поддержку:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="6.0" layoutY="24.0" text="Support@Plan.app">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="67.0" text="Задайте вопросы,">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="118.0" text="сервисе">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="101.0" text="выскажите своё мнение о">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="84.0" text="сообщите об ошибке или">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </bottom>
+      </BorderPane>
+      <Pane fx:id="AvtorizP" cache="true" cacheHint="SCALE_AND_ROTATE" layoutY="50.0" prefHeight="1080.0" prefWidth="1920.0" visible="false">
+         <children>
+            <Button fx:id="VhodMenu" layoutX="920.0" layoutY="626.0" mnemonicParsing="false" onAction="#OnMenuVhod" prefWidth="80.0" text="Войти">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="220.0" fitWidth="281.0" layoutX="850.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Untitled_logo_1_free-file.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="850.0" layoutY="486.0" prefWidth="220.0" text="Введите данные для входа">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField layoutX="810.0" layoutY="526.0" prefHeight="30.0" prefWidth="300.0" promptText="Почта">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="810.0" layoutY="576.0" prefWidth="300.0" promptText="Пароль">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
