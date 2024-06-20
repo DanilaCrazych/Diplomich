@@ -12,13 +12,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class functionClass {
 
     public <T> void searchMethod(TextField searchField, String searchBDName, String columnName, TableView<T> tableView, Class<T> clazz) {
         ConBD cb = new ConBD();
-        Connection connection = cb.ConnectBd();
+        cb.ConnectBd();
+        Connection connection = cb.connection;
 
         if (connection == null) {
             System.out.println("Failed to make connection!");
@@ -36,9 +36,14 @@ public class functionClass {
                 ObservableList<T> dataList = FXCollections.observableArrayList();
                 while (resultSet.next()) {
                     T instance = clazz.getDeclaredConstructor().newInstance();
+
                     for (Field field : clazz.getDeclaredFields()) {
                         field.setAccessible(true);
-                        field.set(instance, resultSet.getObject(field.getName()));
+                        try {
+                            field.set(instance, resultSet.getObject(field.getName()));
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
                     }
                     dataList.add(instance);
                 }

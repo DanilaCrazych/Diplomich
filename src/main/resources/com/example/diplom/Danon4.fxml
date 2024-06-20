@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--dsa-->
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -66,13 +68,13 @@
          <bottom>
             <Pane prefHeight="1080.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane fx:id="NaryaduPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1080.0" prefWidth="1920.0">
+                  <Pane fx:id="NaryaduPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1080.0" prefWidth="1920.0" visible="false">
                      <children>
                         <BorderPane prefHeight="1080.0" prefWidth="1920.0">
                            <top>
                               <Pane prefHeight="100.0" style="-fx-background-color: #1c1c1b;" BorderPane.alignment="CENTER">
                                  <children>
-                                    <TextField fx:id="searchNarady" layoutX="450.0" layoutY="35.0" prefHeight="30.0" prefWidth="250.0" promptText="Поиск">
+                                    <TextField layoutX="450.0" layoutY="35.0" prefHeight="30.0" prefWidth="250.0" promptText="Поиск">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -129,7 +131,7 @@
                         </BorderPane>
                      </children>
                   </Pane>
-                  <Pane fx:id="AdresaPane" layoutX="-1.0" prefHeight="1080.0" prefWidth="1980.0" visible="false">
+                  <Pane fx:id="AdresaPane" layoutX="-1.0" prefHeight="1080.0" prefWidth="1980.0">
                      <children>
                         <BorderPane prefHeight="1080.0" prefWidth="1920.0">
                            <top>
@@ -150,7 +152,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <TextField fx:id="PoiskAdresa" layoutX="320.0" layoutY="40.0" prefWidth="200.0" promptText="Поиск">
+                                    <TextField fx:id="PoiskAdresa" layoutX="320.0" layoutY="40.0" onKeyReleased="#searchKlient" prefWidth="200.0" promptText="Поиск">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -197,11 +199,11 @@
                                                    <children>
                                                       <TableView fx:id="Klient" prefHeight="950.0" prefWidth="1920.0">
                                                         <columns>
-                                                          <TableColumn fx:id="Klient_Id" prefWidth="100.0" text="№" />
-                                                          <TableColumn fx:id="Klient_FIO" prefWidth="420.0" text="ФИО" />
-                                                            <TableColumn fx:id="Klient_Tel" prefWidth="200.0" text="Телефон" />
-                                                            <TableColumn fx:id="Klient_Ad" prefWidth="700.0" text="Адрес" />
-                                                            <TableColumn fx:id="Klient_OpAd" prefWidth="500.0" text="Описание адреса" />
+                                                          <TableColumn fx:id="Id" prefWidth="100.0" text="№" />
+                                                          <TableColumn fx:id="FIO" prefWidth="420.0" text="ФИО" />
+                                                            <TableColumn fx:id="Telefon" prefWidth="200.0" text="Телефон" />
+                                                            <TableColumn fx:id="Adres" prefWidth="700.0" text="Адрес" />
+                                                            <TableColumn fx:id="OpisanieAd" prefWidth="500.0" text="Описание адреса" />
                                                         </columns>
                                                       </TableView>
                                                    </children>
@@ -457,7 +459,7 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloseKl" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
+                                    <Button fx:id="CloseKl" layoutX="510.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloseKl" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -809,7 +811,7 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" onAction="#onCloseSotr" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
+                                    <Button layoutX="510.0" layoutY="10.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="X" textFill="#d30d0d">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
