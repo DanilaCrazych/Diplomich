@@ -328,7 +328,7 @@ public class HelloController implements Initializable {
             Nar_Zap.setCellValueFactory(new PropertyValueFactory<Naryadu, Date>("Zaplanirovan"));
             Nar_S.setCellValueFactory(new PropertyValueFactory<Naryadu, String>("S"));
             Nar_Do.setCellValueFactory(new PropertyValueFactory<Naryadu, String>("Do"));
-            Nar_Do.setCellValueFactory(new PropertyValueFactory<Naryadu, String>("Sщstщyanie"));
+            Nar_Do.setCellValueFactory(new PropertyValueFactory<Naryadu, String>("Sostoyanie"));
             Nar.setItems(listNaryadu);
         } catch (Exception e) {
             throw new RuntimeException(e);
