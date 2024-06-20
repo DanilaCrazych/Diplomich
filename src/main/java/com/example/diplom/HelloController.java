@@ -28,13 +28,13 @@ public class HelloController implements Initializable {
     @FXML
     private TextField KlFIO, KlTel, KlAd, ObNaz, ObYurLico, ObAd, ObTel, ObPochta, NarNaz, NarOp, NarOb, NarAd, NarIspolin, NarZap, NarS, NarDo, NarSos, TFUdKl, TFUdOb, PoiskAdresa;
     @FXML
-    private TextArea TAObOpOb, TAObOpAd, TAKlOpAd;
+    private TextArea TAObOpOb, TAObOpAd, TAKlOpAd, TANarOp;
     @FXML
     private Pane NaryaduPane, AdresaPane, BrigaduPane, SotrudnikiPane, AvtorizP, NewOb, NewNr, NewKl, VuhodPane, VoprosPane, NewBrigada, NewSotrudnik, IzmenitSotrudnik, IzmenitBrigada;
     @FXML
     private BorderPane borderP;
     @FXML
-    private ComboBox ComboNarOb2, ComboNarIspolin, ComboNarSos;
+    private ComboBox ComboNarOb, ComboNarIspolin, ComboNarSos;
     @FXML
     private DatePicker DataNar;
     @FXML
@@ -145,7 +145,6 @@ public class HelloController implements Initializable {
         NewKl.setVisible(false);
         NewOb.setVisible(false);
     }
-
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {
@@ -205,42 +204,25 @@ public class HelloController implements Initializable {
 //        }
 //    }
     @FXML
-    protected void FILLFalse() {
-        NewBrigada.setVisible(false);
-        NewSotrudnik.setVisible(false);
-        IzmenitBrigada.setVisible(false);
-        IzmenitSotrudnik.setVisible(false);
-
-    }
-
-    @FXML
     protected void onDobNK() {
-        FILLFalse();
         NewKl.setVisible(false);
         NewNr.setVisible(false);
         NewOb.setVisible(true);
         VuhodPane.setVisible(false);
         VoprosPane.setVisible(false);
-
     }
-
     @FXML
     protected void AktivVuhod() {
-        FILLFalse();
         borderP.setVisible(false);
         AvtorizP.setVisible(true);
     }
-
     @FXML
     protected void AktivVopros() {
-        FILLFalse();
         VoprosPane.setVisible(true);
         VuhodPane.setVisible(false);
     }
-
     @FXML
     protected void AktivPochta() {
-        FILLFalse();
         VuhodPane.setVisible(true);
         VoprosPane.setVisible(false);
     }
@@ -248,7 +230,6 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void OnDobOb() {
-        FILLFalse();
         NewOb.setVisible(true);
         NewNr.setVisible(false);
         NewKl.setVisible(false);
@@ -258,7 +239,6 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void OnDobNr() {
-        FILLFalse();
         NewNr.setVisible(true);
         NewKl.setVisible(false);
         NewOb.setVisible(false);
@@ -268,7 +248,6 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void OnDobKl() {
-        FILLFalse();
         NewKl.setVisible(true);
         NewNr.setVisible(false);
         NewOb.setVisible(false);
@@ -305,129 +284,27 @@ public class HelloController implements Initializable {
             msg_login.setText("Неверный логин или пароль!");
             msg_login.setVisible(true);
         }
-    }
 
+    }
+    @FXML
+    protected void OpenMenuBrigadu() {
+
+    }
+    @FXML
+    protected void OpenMenuSotrudniki() {
+
+    }
     @FXML
     protected void AktivUdKl() {
 
     }
-
     @FXML
     protected void AktivUdOb() {
 
     }
 
     @FXML
-    protected void OnDobSot() {
-        FILLFalse();
-        NewSotrudnik.setVisible(true);
-    }
-
-    @FXML
-    protected void OnDobBrig() {
-        FILLFalse();
-        NewBrigada.setVisible(true);
-    }
-
-    @FXML
-    protected void OnIzmSot() {
-        FILLFalse();
-        IzmenitSotrudnik.setVisible(true);
-    }
-
-    @FXML
-    protected void OnIzmBrig() {
-        FILLFalse();
-        IzmenitBrigada.setVisible(true);
-    }
-    protected void OpenMenuNastroiki() throws SQLException {
-//        for (int i = 0; i < listObject.size(); i++){
-//            ComboNarOb.getItems().add(listObject.get(i));
-//        }
-//            for (int i = 0; i < listSotrudniki.size(); i++){
-//            ComboNarIspolin.getItems().add(listSotrudniki.get(i));
-//        }
-//                for (int i = 0; i < listObject.size(); i++){
-//            ComboNarSos.getItems().add(listObject.get(i));
-//        }
-//        gd.getDataSotrudniki();
-//        listSotrudniki = gd.listSotrudniki;
-//        try {
-//            Sotrudniki_Id.setCellValueFactory(new PropertyValueFactory<Sotrudniki, Integer>("Id"));
-//            Sotrudniki_FIO.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Brigadir"));
-//            Sotrudniki_Tel.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Telefon"));
-//            Sotrudniki_Pochta.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Pochta"));
-//            Sotrudniki.setItems(listSotrudniki);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-        NaryaduPane.setVisible(false);
-        AdresaPane.setVisible(false);
-        BrigaduPane.setVisible(false);
-        SotrudnikiPane.setVisible(true);
-        NewNr.setVisible(false);
-        NewKl.setVisible(false);
-        NewOb.setVisible(false);
-        VuhodPane.setVisible(false);
-        VoprosPane.setVisible(false);
-    }
-
-    @FXML
-    protected void onZagOb() throws SQLException {
-        String Nazvanie = (ObNaz.getText());
-        String OpisanieOb = (TAObOpOb.getText());
-        String Adres = (ObAd.getText());
-        String OpisanieAd = (TAObOpAd.getText());
-        String YurLico = (ObYurLico.getText());
-        String Telefon = (ObTel.getText());
-        String Pochta = (ObPochta.getText());
-        try {
-            String quary = "INSERT INTO `Diplomich`.`Object` (`Nazvanie`, `OpisanieOb`, `YurLico`, `Adres`, `OpisanieAd`, `Telefon`, `Pochta`) VALUES ('" + Nazvanie + "', '" + OpisanieOb + "', '" + YurLico + "', '" + Adres + "', '" + OpisanieAd + "', '" + Telefon + "', '" + Pochta + "');";
-            PreparedStatement preparedStatement = connection.prepareStatement(quary);
-            int rows = preparedStatement.executeUpdate();
-            System.out.println("Успешно");
-        } catch (SQLException e) {
-            System.out.println("Неуспешно");
-            printSQLException(e);
-        }
-        ObNaz.clear();
-        TAObOpOb.clear();
-        ObAd.clear();
-        TAObOpAd.clear();
-        ObYurLico.clear();
-        ObTel.clear();
-        ObPochta.clear();
-        NewOb.setVisible(false);
-        this.OpenMenuAdresa();
-    }
-
-    @FXML
-    protected void onZagKl() throws SQLException {
-        String FIO = (KlFIO.getText());
-        String Telefon = (KlTel.getText());
-        String Adres = (KlAd.getText());
-        String OpisanieAd = (TAKlOpAd.getText());
-        try {
-            String quary = "INSERT INTO `Diplomich`.`Klient` (`FIO`, `Telefon`, `Adres`, `OpisanieAd`) VALUES ('" + FIO + "', '" + Telefon + "', '" + Adres + "', '" + OpisanieAd + "');";
-            PreparedStatement preparedStatement = connection.prepareStatement(quary);
-            int rows = preparedStatement.executeUpdate();
-            System.out.println("Успешно");
-        } catch (SQLException e) {
-            System.out.println("Неуспешно");
-            printSQLException(e);
-        }
-        KlFIO.clear();
-        TAKlOpAd.clear();
-        KlTel.clear();
-        KlAd.clear();
-        NewKl.setVisible(false);
-        this.OpenMenuAdresa();
-    }
-
-    @FXML
-    protected void onZagSot() {
-    }
-
+    protected void onZagSot(){}
     @FXML
     protected void OpenMenuNaryadu() {
         cb.ConnectBd();
@@ -443,7 +320,7 @@ public class HelloController implements Initializable {
             Nar_Zap.setCellValueFactory(new PropertyValueFactory<Naryadu, Date>("Zaplanirovan"));
             Nar_S.setCellValueFactory(new PropertyValueFactory<Naryadu, String>("S"));
             Nar_Do.setCellValueFactory(new PropertyValueFactory<Naryadu, String>("Do"));
-            Nar_Do.setCellValueFactory(new PropertyValueFactory<Naryadu, String>("Sostoyanie"));
+            Nar_Do.setCellValueFactory(new PropertyValueFactory<Naryadu, String>("Spstpyanie"));
             Nar.setItems(listNaryadu);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -500,45 +377,11 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    protected void OpenMenuBrigadu() throws SQLException {
-        gd.getDataBrigadu();
-        listBrigadu = gd.listBrigadu;
-        try {
-            Brigadu_Id.setCellValueFactory(new PropertyValueFactory<Brigadu, Integer>("Id"));
-            Brigadu_Brigadir.setCellValueFactory(new PropertyValueFactory<Brigadu, String>("Brigadir"));
-            Brigadu_Sotrudnik.setCellValueFactory(new PropertyValueFactory<Brigadu, String>("Sotrudniki"));
-            Brigadu.setItems(listBrigadu);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    protected void OpenMenuGrahik() {
         NaryaduPane.setVisible(false);
         AdresaPane.setVisible(false);
         BrigaduPane.setVisible(true);
         SotrudnikiPane.setVisible(false);
-        NewNr.setVisible(false);
-        NewKl.setVisible(false);
-        NewOb.setVisible(false);
-        VuhodPane.setVisible(false);
-        VoprosPane.setVisible(false);
-    }
-
-    @FXML
-    protected void OpenMenuSotrudniki() throws SQLException {
-        gd.getDataSotrudniki();
-        listSotrudniki = gd.listSotrudniki;
-        try {
-            Sotrudniki_Id.setCellValueFactory(new PropertyValueFactory<Sotrudniki, Integer>("Id"));
-            Sotrudniki_FIO.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("FIO"));
-            Sotrudniki_Tel.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Telefon"));
-            Sotrudniki_Pochta.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Pochta"));
-            Sotrudniki.setItems(listSotrudniki);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        NaryaduPane.setVisible(false);
-        AdresaPane.setVisible(false);
-        BrigaduPane.setVisible(false);
-        SotrudnikiPane.setVisible(true);
         NewNr.setVisible(false);
         NewKl.setVisible(false);
         NewOb.setVisible(false);
@@ -557,6 +400,125 @@ public class HelloController implements Initializable {
         functionClass search = new functionClass();
 
         search.searchMethod(PoiskAdresa, "Klient", "FIO", Klient, Klient.class);
+    }
+    @FXML
+    protected void OpenMenuNastroiki() throws SQLException {
+//        for (int i = 0; i < listObject.size(); i++){
+//            ComboNarOb.getItems().add(listObject.get(i));
+//        }
+//            for (int i = 0; i < listSotrudniki.size(); i++){
+//            ComboNarIspolin.getItems().add(listSotrudniki.get(i));
+//        }
+//                for (int i = 0; i < listObject.size(); i++){
+//            ComboNarSos.getItems().add(listObject.get(i));
+//        }
+//        gd.getDataSotrudniki();
+//        listSotrudniki = gd.listSotrudniki;
+//        try {
+//            Sotrudniki_Id.setCellValueFactory(new PropertyValueFactory<Sotrudniki, Integer>("Id"));
+//            Sotrudniki_FIO.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Brigadir"));
+//            Sotrudniki_Tel.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Telefon"));
+//            Sotrudniki_Pochta.setCellValueFactory(new PropertyValueFactory<Sotrudniki, String>("Pochta"));
+//            Sotrudniki.setItems(listSotrudniki);
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+        NaryaduPane.setVisible(false);
+        AdresaPane.setVisible(false);
+        BrigaduPane.setVisible(false);
+        SotrudnikiPane.setVisible(true);
+        NewNr.setVisible(false);
+        NewKl.setVisible(false);
+        NewOb.setVisible(false);
+        VuhodPane.setVisible(false);
+        VoprosPane.setVisible(false);
+    }
+
+    @FXML
+    protected void onZagKl() throws SQLException {
+        String FIO = (KlFIO.getText());
+        String Telefon = (KlTel.getText());
+        String Adres = (KlAd.getText());
+        String OpisanieAd = (TAKlOpAd.getText());
+        try {
+            String quary = "INSERT INTO `Diplomich`.`Klient` (`FIO`, `Telefon`, `Adres`, `OpisanieAd`) VALUES ('" + FIO + "', '" + Telefon + "', '" + Adres + "', '" + OpisanieAd + "');";
+            PreparedStatement preparedStatement = connection.prepareStatement(quary);
+            int rows = preparedStatement.executeUpdate();
+            System.out.println("Успешно");
+        } catch (SQLException e) {
+            System.out.println("Неуспешно");
+            printSQLException(e);
+        }
+        KlFIO.clear();
+        TAKlOpAd.clear();
+        KlTel.clear();
+        KlAd.clear();
+        NewKl.setVisible(false);
+        this.OpenMenuAdresa();
+    }
+
+    @FXML
+    protected void onZagOb() throws SQLException {
+        String Nazvanie = (ObNaz.getText());
+        String OpisanieOb = (TAObOpOb.getText());
+        String Adres = (ObAd.getText());
+        String OpisanieAd = (TAObOpAd.getText());
+        String YurLico = (ObYurLico.getText());
+        String Telefon = (ObTel.getText());
+        String Pochta = (ObPochta.getText());
+        try {
+            String quary = "INSERT INTO `Diplomich`.`Object` (`Nazvanie`, `OpisanieOb`, `YurLico`, `Adres`, `OpisanieAd`, `Telefon`, `Pochta`) VALUES ('" + Nazvanie + "', '" + OpisanieOb + "', '" + YurLico + "', '" + Adres + "', '" + OpisanieAd + "', '" + Telefon + "', '" + Pochta + "');";
+            PreparedStatement preparedStatement = connection.prepareStatement(quary);
+            int rows = preparedStatement.executeUpdate();
+            System.out.println("Успешно");
+        } catch (SQLException e) {
+            System.out.println("Неуспешно");
+            printSQLException(e);
+        }
+        ObNaz.clear();
+        TAObOpOb.clear();
+        ObAd.clear();
+        TAObOpAd.clear();
+        ObYurLico.clear();
+        ObTel.clear();
+        ObPochta.clear();
+        NewOb.setVisible(false);
+        this.OpenMenuAdresa();
+    }
+
+    @FXML
+    protected void onZagNar() throws SQLException {
+        String Nazvanie = (NarNaz.getText());
+        String Opisanie = (TANarOp.getText());
+        String Klient = ComboNarOb.getValue().toString();
+        String Adres = (NarAd.getText());
+        String Ispolnitel = ComboNarIspolin.getValue().toString();
+        String Zaplanirovan = (DataNar.toString());
+        String S = (NarS.getText());
+        String Do = (NarDo.getText());
+        String Sostoyanie = (NarSos.getText());
+        try {
+            String quary = "INSERT INTO `Diplomich`.`Naryadu` (`Nazvanie`, `Opisanie`, `Klient`, `Adres`, `, `Ispolnitel``, `Zaplanirovan`, `S`, `Do`, `Sostoyanie`) VALUES ('" + Nazvanie + "', '" + Opisanie + "', '" + Klient + "', '" + Adres + "', '" + Ispolnitel + "', '" + Zaplanirovan + "', '" + S + "', '" + Do + "', '" + Sostoyanie + "');";
+            PreparedStatement preparedStatement = connection.prepareStatement(quary);
+            int rows = preparedStatement.executeUpdate();
+            System.out.println("Успешно");
+        } catch (SQLException e) {
+            System.out.println("Неуспешно");
+            printSQLException(e);
+        }
+
+
+        NarNaz.clear();
+        TANarOp.clear();
+        NarAd.clear();
+        NarS.clear();
+        NarDo.clear();
+        ComboNarOb.getItems().clear();
+        DataNar.cancelEdit();
+        ComboNarIspolin.getItems().clear();
+        NarSos.clear();
+        NewOb.setVisible(false);
+        this.OpenMenuAdresa();
     }
 
 
